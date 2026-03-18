@@ -1,0 +1,67 @@
+-- queries.sql — SQL Analytics Lab
+-- Module 3: SQL & Relational Data
+--
+-- Instructions:
+--   Write your SQL query beneath each comment block.
+--   Do NOT modify the comment markers (-- Q1, -- Q2, etc.) — the autograder uses them.
+--   Test each query locally: psql -h localhost -U postgres -d testdb -f queries.sql
+--
+-- ============================================================
+
+-- Q1: Employee Directory with Departments
+-- List all employees with their department name, sorted by department (asc) then salary (desc).
+-- Expected columns: first_name, last_name, title, salary, department_name
+-- SQL concepts: JOIN, ORDER BY
+
+
+-- Q2: Department Salary Analysis
+-- Total salary expenditure by department. Only departments with total > 150,000.
+-- Expected columns: department_name, total_salary
+-- SQL concepts: GROUP BY, HAVING, SUM
+
+
+-- Q3: Highest-Paid Employee per Department
+-- For each department, find the employee with the highest salary.
+-- Expected columns: department_name, first_name, last_name, salary
+-- SQL concepts: Window function (ROW_NUMBER or RANK), CTE
+
+
+-- Q4: Project Staffing Overview
+-- All projects with employee count and total hours. Include projects with 0 assignments.
+-- Expected columns: project_name, employee_count, total_hours
+-- SQL concepts: LEFT JOIN, GROUP BY, COALESCE
+
+
+-- Q5: Above-Average Departments
+-- Departments where average salary exceeds the company-wide average salary.
+-- Expected columns: department_name, avg_salary
+-- SQL concepts: CTE
+
+
+-- Q6: Running Salary Total
+-- Each employee's salary and running total within their department, ordered by hire date.
+-- Expected columns: department_name, first_name, last_name, hire_date, salary, running_total
+-- SQL concepts: Window function (SUM OVER)
+
+
+-- Q7: Unassigned Employees
+-- Employees not assigned to any project.
+-- Expected columns: first_name, last_name, department_name
+-- SQL concepts: LEFT JOIN + NULL check (or NOT EXISTS)
+
+
+-- Q8: Hiring Trends
+-- Month-over-month hire count.
+-- Expected columns: hire_year, hire_month, hires
+-- SQL concepts: EXTRACT, GROUP BY, ORDER BY
+
+
+-- Q9: Schema Design — Employee Certifications
+-- Design and implement a certifications tracking system.
+--
+-- Tasks:
+-- 1. CREATE TABLE certifications (certification_id SERIAL PK, name VARCHAR NOT NULL, issuing_org VARCHAR, level VARCHAR)
+-- 2. CREATE TABLE employee_certifications (id SERIAL PK, employee_id FK->employees, certification_id FK->certifications, certification_date DATE NOT NULL)
+-- 3. INSERT at least 3 certifications and 5 employee_certification records
+-- 4. Write a query listing employees with their certifications (JOIN across 3 tables)
+--    Expected columns: first_name, last_name, certification_name, issuing_org, certification_date
